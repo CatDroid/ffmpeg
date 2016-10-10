@@ -66,7 +66,7 @@ const uint8_t ff_mpeg4audio_channels[8] = {
 static inline int get_object_type(GetBitContext *gb)
 {
     int object_type = get_bits(gb, 5);
-    if (object_type == AOT_ESCAPE)
+    if (object_type == AOT_ESCAPE) // = 31 
         object_type = 32 + get_bits(gb, 6);
     return object_type;
 }
