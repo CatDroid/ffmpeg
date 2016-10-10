@@ -157,6 +157,49 @@ typedef struct Frame {
     double pts;           /* presentation timestamp for the frame */
     double duration;      /* estimated duration of the frame */
     int64_t pos;          /* byte position of the frame in the input file */
+
+    /*
+     * http://stackoverflow.com/questions/17579286/sdl2-0-alternative-for-sdl-overlay
+     *
+     * 1. SDL2 >= 2.0.1 has SDL_UpdateYUVTexture() for updating planar YUV textures
+     * 2. SDL_Overlay is no longer used in SDL2
+     * 3.
+     *  SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER)
+     *  SDL_Window * screen = SDL_CreateWindow(
+            "FFmpeg Tutorial",
+            SDL_WINDOWPOS_UNDEFINED,
+            SDL_WINDOWPOS_UNDEFINED,
+            pCodecCtx->width,
+            pCodecCtx->height,
+            0
+        );
+        SDL_Renderer* renderer = SDL_CreateRenderer(screen, -1, 0);
+
+        SDL_Texture *  texture = SDL_CreateTexture(
+									renderer,
+									SDL_PIXELFORMAT_YV12,
+									SDL_TEXTUREACCESS_STREAMING,
+									pCodecCtx->width,
+									pCodecCtx->height);
+
+		每一帧进行显示
+		SDL_UpdateYUVTexture(
+                        texture,
+                        NULL,
+                        yPlane,
+                        pCodecCtx->width,
+                        uPlane,
+                        uvPitch,
+                        vPlane,
+                        uvPitch
+                    );
+		SDL_RenderClear(renderer);
+		SDL_RenderCopy(renderer, texture, NULL, NULL);
+		SDL_RenderPresent(renderer);
+
+
+
+     */
     SDL_Overlay *bmp;
     int allocated;
     int reallocate;
