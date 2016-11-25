@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="c,cpp">
+<includepath>D:\android-ndk-r10d\platforms\android-21\arch-arm\usr\include</includepath>
+<includepath>E:\EclipseSource\SDL2-2.0.4\include</includepath>
+<includepath>D:\android-ndk-r10d\sources\cxx-stl\gnu-libstdc++\4.9\include</includepath>
+<includepath>D:\android-ndk-r10d\toolchains\aarch64-linux-android-4.9\prebuilt\windows-x86_64\lib\gcc\aarch64-linux-android\4.9\include</includepath>
+<includepath>D:\android-ndk-r10d\toolchains\aarch64-linux-android-4.9\prebuilt\windows-x86_64\lib\gcc\aarch64-linux-android\4.9\include-fixed</includepath>
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="c,cpp">
+
+</language>
+</section>
+</cdtprojectproperties>
