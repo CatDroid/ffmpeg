@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-PREFIX=$(pwd)/android/armv7-a
+PREFIX=$(pwd)/android/armeabi-v7a
 
 #./configure --list-decoders
 

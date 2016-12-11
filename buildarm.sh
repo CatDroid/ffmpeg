@@ -2,7 +2,7 @@
 
 
 #PREFIX=$(pwd)/android/aarch64
-PREFIX=$(pwd)/android/arm
+PREFIX=$(pwd)/android/armeabi
 
 # move to ~/.bashrc
 #TOOLCHAIN=/home/hhl/WorkBin/my_android_toolchain
