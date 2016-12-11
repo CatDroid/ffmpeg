@@ -2176,6 +2176,8 @@ static int unrefcount_frame(AVCodecInternal *avci, AVFrame *frame)
     return 0;
 }
 
+// 同步方法
+// 异步方式是: avcodec_send_packet() and avcodec_receive_frame()
 int attribute_align_arg avcodec_decode_video2(AVCodecContext *avctx, AVFrame *picture,
                                               int *got_picture_ptr,
                                               const AVPacket *avpkt)

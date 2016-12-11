@@ -1570,7 +1570,7 @@ typedef struct AVPacket {
      * stored.
      * May be NULL, then the packet data is not reference-counted.
      */
-    AVBufferRef *buf;
+    AVBufferRef *buf; // 保存原来的内存地址和大小 
     /**
      * Presentation timestamp in AVStream->time_base units; the time at which
      * the decompressed packet will be presented to the user.
