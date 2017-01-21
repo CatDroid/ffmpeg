@@ -89,12 +89,22 @@ static int video_decode_example(const char *input_filename)
         av_log(ctx, AV_LOG_ERROR, "Can't open decoder\n");
         return result;
     }
-
-    fr = av_frame_alloc();
+	
+	// 只是获取了AVFrame外壳 
+	// uint8_t *data[AV_NUM_DATA_POINTERS]; 
+	// AVBufferRef *buf[AV_NUM_DATA_POINTERS];
+	
+    fr = av_frame_alloc(); 
     if (!fr) {
         av_log(NULL, AV_LOG_ERROR, "Can't allocate frame\n");
         return AVERROR(ENOMEM);
     }
+
+	/*
+		av_image_get_buffer_size align 不能是0  可以是16 32等
+
+		代表 宽的像素 要是16和32的倍数  如果 
+	*/
 
     byte_buffer_size = av_image_get_buffer_size(ctx->pix_fmt, ctx->width, ctx->height, 16);
     byte_buffer = av_malloc(byte_buffer_size);
