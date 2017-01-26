@@ -24,8 +24,8 @@ PREFIX=$(pwd)/android/arm64-v8a
 	--arch=aarch64 \
 	--cpu=armv8-a \
 	--target-os=android \
-	--extra-cflags="-Os -Wall -fpic" 
-
+	--extra-cflags="-Os -Wall -fpic" \
+	--disable-stripping
 #	--extra-ldflags=""
 #	--disable-decoders \
 #	--enable-decoder=h264 \
