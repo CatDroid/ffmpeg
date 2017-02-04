@@ -39,8 +39,8 @@ PKG_CONFIG_PATH=${MY_CONFIG_PATH} ./configure --prefix=$PREFIX \
 	--enable-libopencore-amrnb \
 	--enable-libopencore-amrwb \
 	--enable-version3 \
-	--enable-libopus
-
+	--enable-libopus \
+	--enable-avresample 
 #	--disable-decoders \
 #	--enable-decoder=h264 \
 #	--enable-decoder=aac \
