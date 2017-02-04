@@ -4443,6 +4443,7 @@ int av_copy_packet_side_data(AVPacket *dst, const AVPacket *src);
  */
 attribute_deprecated
 void av_free_packet(AVPacket *pkt);
+// 区分 av_packet_free(释放AVPacket本身) 和  av_free_packet(释放数据)
 #endif
 /**
  * Allocate new information of a packet.

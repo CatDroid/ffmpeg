@@ -83,7 +83,7 @@ static int packet_alloc(AVBufferRef **buf, int size)
     return 0;
 }
 
-int av_new_packet(AVPacket *pkt, int size)
+int av_new_packet(AVPacket *pkt, int size) // AVBuffer refcount=1
 {
     AVBufferRef *buf = NULL;
     int ret = packet_alloc(&buf, size);
@@ -198,8 +198,8 @@ static int copy_packet_data(AVPacket *pkt, const AVPacket *src, int dup)
 {
     pkt->data      = NULL;
     pkt->side_data = NULL;
-    if (pkt->buf) {
-        AVBufferRef *ref = av_buffer_ref(src->buf);
+    if (pkt->buf) {// 不同的AVPacket里面 各自的AVBufferRef 指向同一个 AVBuffer 
+        AVBufferRef *ref = av_buffer_ref(src->buf); // 增加引用计数
         if (!ref)
             return AVERROR(ENOMEM);
         pkt->buf  = ref;
