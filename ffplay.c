@@ -620,7 +620,7 @@ static int decoder_decode_frame(Decoder *d, AVFrame *frame, AVSubtitle *sub) {
                     SDL_CondSignal(d->empty_queue_cond);
                 if (packet_queue_get(d->queue, &pkt, 1, &d->pkt_serial) < 0)
                     return -1; // 获取一个原始包H264/AAC
-                if (pkt.data == flush_pkt.data) { // flush刷新??? packet_queue_put(,flush_pkt) 导致serial++??
+                if (pkt.data == flush_pkt.data) { // seek的时候会往队列中发送flush_pkt, flush刷新??? packet_queue_put(,flush_pkt) 导致serial++??
                     avcodec_flush_buffers(d->avctx); // 清理解码器 AVCodecContext  !!
                     d->finished = 0;
                     d->next_pts = d->start_pts;

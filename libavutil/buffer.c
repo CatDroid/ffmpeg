@@ -192,6 +192,9 @@ int av_buffer_realloc(AVBufferRef **pbuf, int size)
 
     if (!(buf->buffer->flags & BUFFER_FLAG_REALLOCATABLE) ||
         !av_buffer_is_writable(buf)) {
+        // 如果AVBuffer不支持重分配 或者当前只读 或者 已经有多个AVBufferRef引用 
+        // 那么这里将重新分配AVBuffer AVBufferRef 将原对应的AVBuffer的内容拷贝过来
+        // 这样AVPacket就指向 不同的 AVBUffer实例 
         /* cannot realloc, allocate a new reallocable buffer and copy data */
         AVBufferRef *new = NULL;
 
@@ -199,6 +202,7 @@ int av_buffer_realloc(AVBufferRef **pbuf, int size)
         if (!new)
             return AVERROR(ENOMEM);
 
+		
         memcpy(new->data, buf->data, FFMIN(size, buf->size));
 
         buffer_replace(pbuf, &new);
